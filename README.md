@@ -39,3 +39,10 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 → Appコンポーネントを `id="root"` に出力する
+
+### コンポーネントの定義
+
+- コンポーネントを定義するには、 `Component` クラスを継承( `extends` )する。
+- `class` `extends` などは `ES2015` ~導入の新しい構文。
+- 名前は `Pascal形式` (すべて頭文字が大文字, ex) `SampleApp` )
+- `camelCase` はHTMLと区別がつかないため不可。
