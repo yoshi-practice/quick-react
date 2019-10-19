@@ -2,7 +2,7 @@
 
 ---
 
-## create-react-app
+## `create-react-app`
 
 ### 内容
 - `webpack` : モジュールバンドラ
@@ -23,7 +23,7 @@
 
 ## 構文
 
-### renderメソッド
+### `render` メソッド
 
 ```
 render (comp, target)
@@ -39,6 +39,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 → Appコンポーネントを `id="root"` に出力する
+- HTMLタグを複数並べての `render` はできない。その場合、 `<div>` タグで囲む。
 
 ### コンポーネントの定義
 
