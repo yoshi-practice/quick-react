@@ -81,5 +81,47 @@ setInterval(() => {
 - 唯一のルートをもつ。複数の要素の列挙には `<div>` を用いる。
 - 階層を増やせない場合は、 `<react.Fragment>` 要素を使用しても良い。最終的なレンダーには反映されない。
 - 空要素は `~~ />` で終わる。 ex) `<img src="~" />`, `<br />`
+- 属性名に `class` `for` などの属性は使えず、 `className` `htmlFor` で代替する。
+- コメント `<!-- -->` は使用できず、 `{/* ... */}` を使用する。
 
-### 属性名
+### テンプレートにJavaScript構文を埋め込む
+
+テンプレートには `{}` で式を埋め込むことができる。
+
+ex)
+
+```
+const name = 'yoshi';
+
+ReactDOM.render(
+    <p>Hello, {name}!</p>,
+    document.getElementById('root')
+);
+```
+
+もちろん、演算子などもそのまま埋め込むことが可能（だが、視認性が悪くなるため基本的にはしない）。
+
+### エスケープ処理
+
+```
+const str = "hello!"
+
+ReactDOM.render(
+    <p>{str}</p>,
+    document.getElementById('root')
+);
+```
+
+この場合、タグがそのまま表示されてしまうため、クロスサイトスクリプティングなどの脆弱性の原因になる。
+
+動的にHTMLを作成し、反映させたい時は、 `dangerouslySetInnnerHTML` で式の値を指定する。
+
+ここで指定された物は、エスケープされずにそのまま要素配下に埋め込まれる。
+
+ex)
+
+```
+<p dagngerouslySetInnerHTML={{__html: str}}></p>
+```
+
+ただし、これは **適切なエスケープ処理がなされていることが分かっているコンテンツのみに使用する。**
