@@ -1,4 +1,4 @@
-@charset "Shift_JIS";
+<!-- @charset "Shift_JIS"; -->
 
 # Quick React
 
