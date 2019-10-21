@@ -50,6 +50,67 @@ ReactDOM.render(<App />, document.getElementById('root'));
 - 名前は `Pascal形式` (すべて頭文字が大文字, ex) `SampleApp` )
 - `camelCase` はHTMLと区別がつかないため不可。
 
+### コンポーネントの記述方法
+記述方法には２通りあり、
+
+1. `Function` コンポーネント
+2. `Class` コンポーネント
+
+1の方ができることが少なく、 `Stateオブジェクト（データ保持）` `ライフサイクルメソッド` を使用することはできない。
+
+ex) `***.js`
+
+```
+import React, {Component} from 'react';
+
+class コンポーネント名 extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            プロパティ名: 直
+        };
+    }
+
+    メソッド
+
+    render() {
+        return (
+            JSX
+        );
+    }
+}
+
+export default コンポーネント名;
+```
+
+### データ保持 `State`
+ReactではStateというオブジェクトを使ってデータを保持している。
+
+保存するデータが更新されるとReactが自動でテンプレートの表示を更新してくれる特殊なオブジェクト。
+
+注意すべきことが２点。
+
+1. `constructor` の中では `state` に直接アクセスして初期値を設定する
+2. それ以外では `setState`メソッドで値を設定する
+
+ex) 直接アクセス
+
+```
+this.state = {
+            name:  "egg",
+            greet: "hello"
+        };
+```
+
+Reactのテンプレートからは、 `{}` を使ってデータにアクセスすることができる。
+
+ex) 
+
+```
+{this.state.name}    // egg
+```
+
 ### レンダリング
 
 - ビューの再利用生を高めるために、コンポーネントを経由した描画が基本だが、HTMLタグを指定しても問題はない。
